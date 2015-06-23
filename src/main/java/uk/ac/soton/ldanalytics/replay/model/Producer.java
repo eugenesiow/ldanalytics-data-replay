@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,9 +13,10 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
 
+import uk.ac.soton.ldanalytics.replay.transform.RdfTransformer;
+
 public class Producer implements Configurable {
 	
-	String transformFile = null;
 	String timeFormat = null;
 	int speed = 1;
 	
@@ -27,11 +26,13 @@ public class Producer implements Configurable {
 	long currentTimeStamp = 0;
 	Map<String,String> data = new HashMap<String,String>();
 	String replayColHeading = null;
+	
+	RdfTransformer rdfTransformer = null;
 
 	public void loadJsonConfig(JSONObject jsonSource) {
 		String formatFile = jsonSource.getString("format_file");
 		String sourceFile = jsonSource.getString("source_file");
-		transformFile = jsonSource.getString("transform_file");
+		String transformFile = jsonSource.getString("transform_file");
 		String startTime = jsonSource.getString("start_time");
 		speed = jsonSource.getInt("speed");
 		timeFormat = jsonSource.getString("time_format");
@@ -40,6 +41,7 @@ public class Producer implements Configurable {
 		loadFormat(formatFile);
 		loadSource(sourceFile);
 		currentTimeStamp = parseTime(startTime);
+		rdfTransformer = new RdfTransformer(transformFile);
 	}
 	
 	private long parseTime(String time) {
@@ -48,6 +50,16 @@ public class Producer implements Configurable {
 			timeStamp = Long.parseLong(time) * 1000L;
 		}
 		return timeStamp;
+	}
+	
+	public void close() {
+		if(br!=null) {
+			try {
+				br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	private void loadSource(String sourceFile) {
@@ -84,6 +96,8 @@ public class Producer implements Configurable {
 	}
 	
 	public String getText() {
+		rdfTransformer.transform(data);
+		//return rdfTransformer.getModel();
 		return data.get(replayColHeading);
 	}
 	

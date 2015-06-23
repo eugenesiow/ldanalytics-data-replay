@@ -28,6 +28,7 @@ public class ProducerThread implements Runnable {
 				lock.set(0);
 			}
 		}
+		producer.close();
 		System.out.println("End Generator Thread");
 	}
 	
