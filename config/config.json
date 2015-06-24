@@ -4,10 +4,11 @@
 			format_file:"/Users/eugene/Downloads/homeA-all/homeA-environmental/FORMAT",
 			source_file:"/Users/eugene/Downloads/homeA-all/homeA-environmental/all-environmental-sort.csv",
 			transform_file:"transform/smarthome_environment",
+			output_file:"environment.ttl",
 			start_time:"1335777600",
 			time_format:"unix",
 			replay_col_heading:"TimestampUTC",
-			speed:300
+			speed:30000
 		}
 	]
 }

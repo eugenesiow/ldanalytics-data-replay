@@ -22,7 +22,7 @@ public class ProducerThread implements Runnable {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				System.out.println(producer.getText());
+				producer.transform();
 			} else {
 				//if producer is finished with the source file it signals to shutdown
 				lock.set(0);

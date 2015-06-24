@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,9 +16,12 @@ import org.json.JSONObject;
 
 import uk.ac.soton.ldanalytics.replay.transform.RdfTransformer;
 
+import com.hp.hpl.jena.rdf.model.Model;
+
 public class Producer implements Configurable {
 	
 	String timeFormat = null;
+	String outputFile = null;
 	int speed = 1;
 	
 	List<String> colHeadings = new ArrayList<String>();
@@ -34,6 +38,7 @@ public class Producer implements Configurable {
 		String sourceFile = jsonSource.getString("source_file");
 		String transformFile = jsonSource.getString("transform_file");
 		String startTime = jsonSource.getString("start_time");
+		outputFile = jsonSource.getString("output_file");
 		speed = jsonSource.getInt("speed");
 		timeFormat = jsonSource.getString("time_format");
 		replayColHeading = jsonSource.getString("replay_col_heading");
@@ -42,6 +47,10 @@ public class Producer implements Configurable {
 		loadSource(sourceFile);
 		currentTimeStamp = parseTime(startTime);
 		rdfTransformer = new RdfTransformer(transformFile);
+	}
+	
+	public String getOutputFileName() {
+		return outputFile;
 	}
 	
 	private long parseTime(String time) {
@@ -95,10 +104,16 @@ public class Producer implements Configurable {
 		return interval/speed;
 	}
 	
-	public String getText() {
+	public void transform() {
 		rdfTransformer.transform(data);
-		//return rdfTransformer.getModel();
-		return data.get(replayColHeading);
+	}
+	
+	public Model getModel() {
+		return rdfTransformer.outputModel();
+	}
+	
+	public void getTurtle(PrintStream ps) {
+		rdfTransformer.outputTurtle(ps);
 	}
 	
 	public void closeSource() {
