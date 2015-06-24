@@ -68,11 +68,13 @@ public class RdfTransformer {
 		if(part.contains("{")&&part.contains("}")) {
 			Matcher m = Pattern.compile("\\{(.*?)\\}").matcher(part);
 			while(m.find()) {
-			    System.out.println(m.group(1));
+				if(uuidMap.containsKey(m.group(1))) {
+					part = part.replace("{"+m.group(1)+"}", uuidMap.get(m.group(1)));
+				}			   
 			}
 		}
 		//has a data ref
-		if(part.contains("(") && part.contains("")) {
+		if(part.contains("(") && part.contains(")")) {
 			Matcher m = Pattern.compile("\\((.*?)\\)").matcher(part);
 			while(m.find()) {
 			    System.out.println(m.group(1));
