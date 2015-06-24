@@ -9,4 +9,4 @@ var:id1:UUID
 	<http://iot.soton.ac.uk/smarthome/environment#snout{id1}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.oclc.org/NET/ssnx/ssn#SensorOutput>
 	<http://iot.soton.ac.uk/smarthome/environment#snout{id1}> <http://purl.oclc.org/NET/ssnx/ssn#isProducedBy> <http://iot.soton.ac.uk/smarthome/sensor#environmental1>
 <http://iot.soton.ac.uk/smarthome/environment#obsval{id1}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.oclc.org/NET/ssnx/ssn#ObservationValue>
-	<http://iot.soton.ac.uk/smarthome/environment#obsval{id1}> <http://purl.oclc.org/NET/ssnx/ssn#hasValue> "(insideTemp)"
+	<http://iot.soton.ac.uk/smarthome/environment#obsval{id1}> <http://purl.oclc.org/NET/ssnx/ssn#hasValue> "(insideTemp[float])"

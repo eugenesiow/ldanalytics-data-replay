@@ -116,6 +116,8 @@ public class RdfTransformer {
 			    		if(props.getString(0).equals("time") && props.getString(2).equals("xsdDateTime")) {
 			    			type = "literal,xsdDateTime";
 			    		}
+			    	} else if(props.length()>0) {
+			    		type = "literal,"+props.getString(0);
 			    	}
 			    }
 			}
@@ -128,6 +130,8 @@ public class RdfTransformer {
 				node = model.createResource(part);
 			} else if(type.equals("literal,xsdDateTime")) {
 				node = model.createTypedLiteral(part, XSDDatatype.XSDdateTime);
+			} else if(type.equals("literal,float")) {
+				node = model.createTypedLiteral(part, XSDDatatype.XSDfloat);
 			}
 		}
 		
@@ -135,6 +139,7 @@ public class RdfTransformer {
 	}
 
 	private String formatPart(String part, String properties) {
+		part=part.trim();
 		if(properties!=null) {
 			JSONArray props = new JSONArray(properties);
 			if(props.length()>0) {
