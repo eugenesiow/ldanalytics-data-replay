@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TimeZone;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -149,10 +150,19 @@ public class RdfTransformer {
 					
 					String to = props.getString(2);
 					
+					String offset = null;
+					if(props.length()>3) {
+						offset = props.getString(3);
+					}
+					
 					Date currentDate = null;
 					
 					if(from.equals("unix")) {
-						currentDate = new Date(Long.parseLong(part)*1000);
+						long gmtTimeInS = Long.parseLong(part);
+						if(offset!=null) {
+							gmtTimeInS = gmtTimeInS + ((Integer.parseInt(offset))*60*60);
+						}
+						currentDate = new Date(gmtTimeInS*1000);
 					}
 					if(to.equals("xsdDateTime")) {
 						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
