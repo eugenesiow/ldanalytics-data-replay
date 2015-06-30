@@ -1,12 +1,15 @@
 var:id1:UUID
-<http://iot.soton.ac.uk/smarthome/environment#obs{id1}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.oclc.org/NET/ssnx/ssn#Observation>
+<http://iot.soton.ac.uk/smarthome/environment#obs{id1}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.oclc.org/NET/iot#WeatherObservation>
 	<http://iot.soton.ac.uk/smarthome/environment#obs{id1}> <http://purl.oclc.org/NET/ssnx/ssn#observationResult> <http://iot.soton.ac.uk/smarthome/environment#snout{id1}>
 	<http://iot.soton.ac.uk/smarthome/environment#obs{id1}> <http://purl.oclc.org/NET/ssnx/ssn#observationSamplingTime> <http://iot.soton.ac.uk/smarthome/environment#time{id1}>
 	<http://iot.soton.ac.uk/smarthome/environment#obs{id1}> <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://iot.soton.ac.uk/smarthome/sensor#environmental1>
 <http://iot.soton.ac.uk/smarthome/environment#time{id1}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/time#Instant>
-	<http://iot.soton.ac.uk/smarthome/environment#time{id1}> <http://www.w3.org/2006/time#inXSDDateTime> "(TimestampUTC[time,unix,xsdDateTime,+15])"
-<http://iot.soton.ac.uk/smarthome/environment#snout{id1}> <http://purl.oclc.org/NET/ssnx/ssn#hasValue> <http://iot.soton.ac.uk/smarthome/environment#obsval{id1}>
-	<http://iot.soton.ac.uk/smarthome/environment#snout{id1}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.oclc.org/NET/ssnx/ssn#SensorOutput>
+	<http://iot.soton.ac.uk/smarthome/environment#time{id1}> <http://www.w3.org/2006/time#inXSDDateTime> "(TimestampUTC[time,unix,xsdDateTime,'-5'])"
+<http://iot.soton.ac.uk/smarthome/environment#snout{id1}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.oclc.org/NET/iot#WeatherSensorOutput>
+	<http://iot.soton.ac.uk/smarthome/environment#snout{id1}> <http://purl.oclc.org/NET/ssnx/ssn#hasValue> <http://iot.soton.ac.uk/smarthome/environment#intempval{id1}>
+	<http://iot.soton.ac.uk/smarthome/environment#snout{id1}> <http://purl.oclc.org/NET/ssnx/ssn#hasValue> <http://iot.soton.ac.uk/smarthome/environment#extempval{id1}>
 	<http://iot.soton.ac.uk/smarthome/environment#snout{id1}> <http://purl.oclc.org/NET/ssnx/ssn#isProducedBy> <http://iot.soton.ac.uk/smarthome/sensor#environmental1>
-<http://iot.soton.ac.uk/smarthome/environment#obsval{id1}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.oclc.org/NET/ssnx/ssn#ObservationValue>
-	<http://iot.soton.ac.uk/smarthome/environment#obsval{id1}> <http://purl.oclc.org/NET/ssnx/ssn#hasValue> "(insideTemp[float])"
+<http://iot.soton.ac.uk/smarthome/environment#intempval{id1}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.oclc.org/NET/iot#InternalTemperatureValue>
+	<http://iot.soton.ac.uk/smarthome/environment#intempval{id1}> <http://purl.oclc.org/NET/iot#hasQuantityValue> "(insideTemp[float])"
+<http://iot.soton.ac.uk/smarthome/environment#extempval{id1}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.oclc.org/NET/iot#ExternalTemperatureValue>
+	<http://iot.soton.ac.uk/smarthome/environment#extempval{id1}> <http://purl.oclc.org/NET/iot#hasQuantityValue> "(outsideTemp[float])"
