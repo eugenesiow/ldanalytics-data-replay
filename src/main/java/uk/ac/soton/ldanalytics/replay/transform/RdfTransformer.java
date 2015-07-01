@@ -122,7 +122,7 @@ public class RdfTransformer {
 			    	}
 			    }
 			}
-		}
+		}		
 		RDFNode node = null;
 		if(type!=null) {
 			if(type.equals("literal")) {
@@ -145,7 +145,7 @@ public class RdfTransformer {
 			JSONArray props = new JSONArray(properties);
 			if(props.length()>0) {
 				String function = props.getString(0);
-				if(function.equals("time")) {
+				if(function.toLowerCase().equals("time")) {
 					String from = props.getString(1);
 					
 					String to = props.getString(2);
@@ -168,6 +168,14 @@ public class RdfTransformer {
 						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 						part = sdf.format(currentDate);
 					};
+				}
+				else if(function.toLowerCase().equals("string")) {
+					if(props.length()>3) {
+						String operator = props.getString(1);
+						String find = props.getString(2);
+						String replace = props.getString(3);
+						part = part.replace(find, replace);
+					}
 				}
 			}
 		}

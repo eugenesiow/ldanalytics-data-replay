@@ -1,0 +1,12 @@
+var:id1:UUID
+<http://iot.soton.ac.uk/smarthome/meter#obs{id1}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.oclc.org/NET/iot#EnergyObservation>
+	<http://iot.soton.ac.uk/smarthome/meter#obs{id1}> <http://purl.oclc.org/NET/ssnx/ssn#observationResult> <http://iot.soton.ac.uk/smarthome/meter#snout{id1}>
+	<http://iot.soton.ac.uk/smarthome/meter#obs{id1}> <http://purl.oclc.org/NET/ssnx/ssn#observationSamplingTime> <http://iot.soton.ac.uk/smarthome/meter#time{id1}>
+	<http://iot.soton.ac.uk/smarthome/meter#obs{id1}> <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://iot.soton.ac.uk/smarthome/sensor#(MeterName[string,replace,":","_"])>
+<http://iot.soton.ac.uk/smarthome/meter#time{id1}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/time#Instant>
+	<http://iot.soton.ac.uk/smarthome/meter#time{id1}> <http://www.w3.org/2006/time#inXSDDateTime> "(TimestampUTC[time,unix,xsdDateTime,'-5'])"
+<http://iot.soton.ac.uk/smarthome/meter#snout{id1}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.oclc.org/NET/iot#EnergySensorOutput>
+	<http://iot.soton.ac.uk/smarthome/meter#snout{id1}> <http://purl.oclc.org/NET/ssnx/ssn#hasValue> <http://iot.soton.ac.uk/smarthome/meter#energyval{id1}>
+	<http://iot.soton.ac.uk/smarthome/meter#snout{id1}> <http://purl.oclc.org/NET/ssnx/ssn#isProducedBy> <http://iot.soton.ac.uk/smarthome/sensor#(MeterName[string,replace,":","_"])>
+<http://iot.soton.ac.uk/smarthome/meter#energyval{id1}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.oclc.org/NET/iot#EnergyValue>
+	<http://iot.soton.ac.uk/smarthome/meter#energyval{id1}> <http://purl.oclc.org/NET/iot#hasQuantityValue> "(RealPowerWatts[float])"

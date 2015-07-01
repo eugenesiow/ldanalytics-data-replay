@@ -1,10 +1,10 @@
 {
 	producers:[
 		{
-			format_file:"D:\\Documents\\Programming\\homeA-all\\homeA-environmental\\FORMAT",
-			source_file:"D:\\Documents\\Programming\\homeA-all\\homeA-environmental\\all-environmental.csv",
-			transform_file:"transform/smarthome_environment",
-			output_file:"environment.ttl",
+			format_file:"D:\\Documents\\Programming\\homeA-all\\homeA-meter\\FORMAT",
+			source_file:"D:\\Documents\\Programming\\homeA-all\\homeA-meter\\week_meter.csv",
+			transform_file:"transform/smarthome_meter",
+			output_file:"meter.ttl",
 			start_time:"1335777600",
 			time_format:"unix",
 			replay_col_heading:"TimestampUTC",
