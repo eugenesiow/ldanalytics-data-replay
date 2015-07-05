@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.TimeZone;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -133,6 +132,12 @@ public class RdfTransformer {
 				node = model.createTypedLiteral(part, XSDDatatype.XSDdateTime);
 			} else if(type.equals("literal,float")) {
 				node = model.createTypedLiteral(part, XSDDatatype.XSDfloat);
+			} else if(type.equals("literal,integer")) {
+				node = model.createTypedLiteral(part, XSDDatatype.XSDinteger);
+			} else if(type.equals("literal,boolean")) {
+				node = model.createTypedLiteral(part, XSDDatatype.XSDboolean);
+			} else if(type.equals("literal,string")) {
+				node = model.createLiteral(part);
 			}
 		}
 		

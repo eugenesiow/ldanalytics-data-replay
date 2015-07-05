@@ -1,0 +1,14 @@
+{
+	producers:[
+		{
+			format_file:"D:\\Documents\\Programming\\homeA-all\\homeA-motion\\FORMAT",
+			source_file:"D:\\Documents\\Programming\\homeA-all\\homeA-motion\\week_motion.csv",
+			transform_file:"transform/smarthome_motion",
+			output_file:"motion.ttl",
+			start_time:"1335777600",
+			time_format:"unix",
+			replay_col_heading:"TimestampUTC",
+			speed:30000
+		}
+	]
+}

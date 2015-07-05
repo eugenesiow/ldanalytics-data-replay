@@ -17,7 +17,7 @@ public class ReplayToFile {
 		
 		//load config
 		try {
-			producers.loadJsonConfig(new JSONObject(FileUtils.readFileToString(new File("config/config-windows.json"))));
+			producers.loadJsonConfig(new JSONObject(FileUtils.readFileToString(new File("config/config-windows-sensors.json"))));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

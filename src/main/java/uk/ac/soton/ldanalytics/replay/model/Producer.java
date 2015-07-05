@@ -133,6 +133,7 @@ public class Producer implements Configurable {
 			e.printStackTrace();
 		}
 		if(format!=null) {
+			format = format.trim();
 			String[] parts = format.split(",");
 			for(int i=0;i<parts.length;i++) {
 				colHeadings.add(parts[i]);
